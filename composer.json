@@ -1,0 +1,9 @@
+{
+    "name": "sds/ioc",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "SDS\\IoC\\": "src"
+        }
+    }
+}
