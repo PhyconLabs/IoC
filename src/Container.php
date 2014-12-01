@@ -160,7 +160,8 @@ class Container
      *
      * @return bool
      */
-    public function isSingleton($abstract) {
+    public function isSingleton($abstract)
+    {
         $concrete = $this->getConcrete($abstract);
         
         return (
