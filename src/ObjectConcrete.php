@@ -3,6 +3,7 @@ namespace SDS\IoC;
 
 use \Closure;
 use \ReflectionClass;
+use \ReflectionException;
 
 /**
  * Binding resolver that resolves class bindings.
@@ -130,7 +131,15 @@ class ObjectConcrete extends Concrete
      */
     protected function build($class, array $arguments)
     {
-        $reflection = new ReflectionClass($class);
+        try {
+            $reflection = new ReflectionClass($class);
+        } catch (ReflectionException $e) {
+            throw new Exceptions\UninstantiableBindingException(
+                "`{$class}` isn't instantiable.",
+                0,
+                $e
+            );
+        }
         
         if (!$reflection->isInstantiable()) {
             throw new Exceptions\UninstantiableBindingException(
