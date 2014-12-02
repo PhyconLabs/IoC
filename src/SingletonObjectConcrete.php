@@ -24,7 +24,7 @@ class SingletonObjectConcrete extends ObjectConcrete
      *
      * @return object Resolved class object.
      */
-    public function make(array $arguments)
+    public function make(array $arguments = [])
     {
         if ($this->hasInstance()) {
             return $this->getInstance();
